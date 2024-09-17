@@ -3,7 +3,7 @@ package dev.nerohaziel.seryu.model;
 import lombok.Getter;
 import lombok.Setter;
 
-public abstract class Entity{
+public abstract class Individual {
     @Getter @Setter
     protected String name;
     @Getter @Setter
@@ -11,7 +11,7 @@ public abstract class Entity{
     @Getter @Setter
     protected int code = 0;
 
-    public Entity(String name){
+    public Individual(String name){
         this.name = name;
 
     }

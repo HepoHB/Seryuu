@@ -7,7 +7,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Patient extends Entity{
+@Individual
+public class Patient extends Individual {
     public static int totalPacients = 0;
     //Basic Data//
     @Getter @Setter
@@ -15,9 +16,9 @@ public class Patient extends Entity{
     @Getter @Setter
     private String gender;
     @Getter @Setter
-    private float weight;
+    private Double weight;
     @Getter @Setter
-    private float height;
+    private Double height;
     //Lifestyle//
     @Getter @Setter
     private boolean sexLife;
@@ -44,13 +45,14 @@ public class Patient extends Entity{
     public void addCchronicDiseases(String disease){ chronicDiseases.add(disease); }
     public void addContinuousMeds(String meds){ continuousMeds.add(meds); }
 
-    public Patient(String name, LocalDate birthday, String gender, float weight, float height){
+    public Patient(String name, LocalDate birthday, String gender, Double weight, Double height){
         super(name);
         this.birthday = birthday;
         this.gender = gender;
         this.weight = weight;
         this.height = height;
-        this.code = totalPacients++;
+        this.code = totalPacients;
+        totalPacients++;
 
     }
 
