@@ -1,5 +1,6 @@
 package dev.nerohaziel.seryu.model;
 
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,37 +8,39 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Individual
-public class Patient extends Individual {
-    public static int totalPacients = 0;
+@Getter @Setter
+@Entity
+@Table(name = "patient_table")
+public class Patient extends Individual{
+    //Primary Keys//
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
+    private long id;
     //Basic Data//
-    @Getter @Setter
+    @Column(name = "birthday", nullable = false)
     private LocalDate birthday;
-    @Getter @Setter
+    @Column(name = "gender", nullable = false)
     private String gender;
-    @Getter @Setter
+    @Column(name = "weight", precision = 3, scale = 2)
     private Double weight;
-    @Getter @Setter
+    @Column(name = "weight", precision = 3, scale = 1)
     private Double height;
     //Lifestyle//
-    @Getter @Setter
+    @Column(name = "sex_life")
     private boolean sexLife;
-    @Getter @Setter
+    @Column(name = "alcohol_comsumption")
     private boolean alcoholConsumption;
-    @Getter @Setter
+    @Column(name = "smoking")
     private boolean smoking;
-    @Getter @Setter
+    @Column(name = "obesity")
     private boolean obesity;
-    @Getter @Setter
+    @Column(name = "pregnant")
     private boolean pregnant;
     //Data List//
-    @Getter
     private List<String> symptons = new ArrayList<>();
-    @Getter
     private List<String> surgeries = new ArrayList<>();
-    @Getter
     private List<String> chronicDiseases = new ArrayList<>();
-    @Getter
     private List<String> continuousMeds = new ArrayList<>();
 
     public void addSymptons(String sympton){ symptons.add(sympton); }
